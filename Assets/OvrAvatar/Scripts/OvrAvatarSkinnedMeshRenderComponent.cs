@@ -8,13 +8,26 @@ public class OvrAvatarSkinnedMeshRenderComponent : OvrAvatarRenderComponent
     Shader surface;
     Shader surfaceSelfOccluding;
     bool previouslyActive = false;
-        
+    bool hasAdded;
+
     internal void Initialize(ovrAvatarRenderPart_SkinnedMeshRender skinnedMeshRender, Shader surface, Shader surfaceSelfOccluding, int thirdPersonLayer, int firstPersonLayer, int sortOrder)
     {
         this.surfaceSelfOccluding = surfaceSelfOccluding != null ? surfaceSelfOccluding :  Shader.Find("OvrAvatar/AvatarSurfaceShaderSelfOccluding");
         this.surface = surface != null ? surface : Shader.Find("OvrAvatar/AvatarSurfaceShader");
         this.mesh = CreateSkinnedMesh(skinnedMeshRender.meshAssetID, skinnedMeshRender.visibilityMask, thirdPersonLayer, firstPersonLayer, sortOrder);
         bones = mesh.bones;
+        if (!hasAdded)
+        {
+            if (bones.Length > 6)
+            {
+                if (bones[7])
+                {
+                    GameObject finger = bones[7].gameObject;
+                    Instantiate(Resources.Load("FingerTip", typeof(GameObject)), finger.transform);
+                }
+                hasAdded = true;
+            }
+        }
         UpdateMeshMaterial(skinnedMeshRender.visibilityMask, mesh);
     }
 

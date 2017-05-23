@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectSpawner : MonoBehaviour {
+public class SpawnableObject : MonoBehaviour {
+
+    public bool state = true;
 
 	// Use this for initialization
 	void Start () {
@@ -14,7 +16,4 @@ public class ObjectSpawner : MonoBehaviour {
 		
 	}
 
-	public void SpawnObject(GameObject prefab){
-		Instantiate (prefab, transform.position, Quaternion.identity);
-	}
 }

@@ -19,11 +19,12 @@ public class HandController : MonoBehaviour {
             {
                 Transform c = handOverlayInstance.transform.GetChild(i);
                 c.position = Vector3.Scale(c.position, new Vector3(-1, 1, 1));
+                c.Rotate(new Vector3(180, 180, 0));
             }
 
 
-            RectTransform uiRect = handOverlayInstance.GetComponentInChildren<RectTransform>();
-            uiRect.Rotate(new Vector3(0, 180, 0));
+            //RectTransform uiRect = handOverlayInstance.GetComponentInChildren<RectTransform>();
+            //uiRect.Rotate(new Vector3(0, 180, 0));
 
         }
     }

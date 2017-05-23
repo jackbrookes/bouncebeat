@@ -252,7 +252,8 @@ public class OVRGrabber : MonoBehaviour
             }
 
             m_grabbedObj = closestGrabbable;
-            m_grabbedObj.GrabBegin(this, closestGrabbableCollider);
+
+            m_grabbedObj = m_grabbedObj.GrabBegin(this, closestGrabbableCollider);
 
             m_lastPos = transform.position;
             m_lastRot = transform.rotation;

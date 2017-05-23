@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BeadSpawner : MonoBehaviour {
+public class BeadSpawner : SpawnableObject {
 
 	public float beadSize = 0.5f; // should be set by spawner scale
 	public float exitVelocity = 3f;
 	public GameObject bead;
 	public float bpm = 60f;
+    public Transform spawnPoint;
 	float period;
 
 
@@ -22,10 +23,12 @@ public class BeadSpawner : MonoBehaviour {
 		
 	}
 
-	// Spawns a bead
+	// Spawns a bead if enabled
 	void CreateBead(){
-		GameObject clone;				
-		clone = Instantiate (bead, transform.position, Quaternion.identity);
-		clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection (Vector3.up * exitVelocity);
+        if (state)
+        {
+            GameObject clone = Instantiate(bead, spawnPoint.position, Quaternion.identity);
+            clone.GetComponent<Rigidbody>().velocity = spawnPoint.TransformDirection(Vector3.up * exitVelocity);
+        }
 	}
 }

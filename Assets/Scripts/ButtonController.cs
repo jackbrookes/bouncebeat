@@ -8,15 +8,15 @@ public class ButtonController : MonoBehaviour {
 
     public float cooldown = 0.2f;
     public string buttonText;
-    public Button button;
-    public Text buttonTextScript;
-    public UnityEvent onPress;
+    Button button;
+    Text buttonTextScript;
     static float refTime = 0f;
 
     // Use this for initialization
     void Start () {
-
-	}
+        button = GetComponent<Button>();
+        buttonTextScript = GetComponentInChildren<Text>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -28,7 +28,6 @@ public class ButtonController : MonoBehaviour {
         if (Time.time > refTime)
         {
             button.onClick.Invoke();
-            onPress.Invoke();
             refTime = Time.time + cooldown;
         }
     }
@@ -36,6 +35,10 @@ public class ButtonController : MonoBehaviour {
     [ContextMenu("Update button")]
     void UpdateButton()
     {
+        if (!buttonTextScript)
+        {
+            buttonTextScript = GetComponentInChildren<Text>();
+        }
         buttonTextScript.text = buttonText;
     }
 }

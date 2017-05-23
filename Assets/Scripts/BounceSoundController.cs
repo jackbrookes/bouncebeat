@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BounceSoundController : MonoBehaviour {
+public class BounceSoundController : SpawnableObject {
 
 	public float normalSpeed = 1f;
 	private AudioSource source;
@@ -20,7 +20,7 @@ public class BounceSoundController : MonoBehaviour {
 
 	// play sound on collision
 	void OnCollisionEnter(Collision col){
-		if (col.gameObject.tag == "Bead") {
+		if (state & col.gameObject.tag == "Bead") {
 			source.pitch = col.gameObject.GetComponent<Rigidbody>().velocity.magnitude / normalSpeed;
 			source.Play();
 		}

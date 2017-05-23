@@ -39,8 +39,8 @@ public class OVRGrabbable : MonoBehaviour
     protected Collider[] m_grabPoints = null;
 
     protected bool m_grabbedKinematic = false;
-    protected Collider m_grabbedCollider = null;
-    protected OVRGrabber m_grabbedBy = null;
+    public Collider m_grabbedCollider = null;
+    public OVRGrabber m_grabbedBy = null;
 
 	/// <summary>
 	/// If true, the object can currently be grabbed.
@@ -117,11 +117,12 @@ public class OVRGrabbable : MonoBehaviour
 	/// <summary>
 	/// Notifies the object that it has been grabbed.
 	/// </summary>
-	virtual public void GrabBegin(OVRGrabber hand, Collider grabPoint)
+	virtual public OVRGrabbable GrabBegin(OVRGrabber hand, Collider grabPoint)
     {
         m_grabbedBy = hand;
         m_grabbedCollider = grabPoint;
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        return this;
     }
 
 	/// <summary>
@@ -137,9 +138,9 @@ public class OVRGrabbable : MonoBehaviour
         m_grabbedCollider = null;
     }
 
-    void Awake()
+    virtual public void Awake()
     {
-        if (m_grabPoints.Length == 0)
+        if (m_grabPoints == null || m_grabPoints.Length == 0)
         {
             // Get the collider from the grabbable
             Collider collider = this.GetComponent<Collider>();
@@ -153,7 +154,7 @@ public class OVRGrabbable : MonoBehaviour
         }
     }
 
-    void Start()
+    public virtual void Start()
     {
         m_grabbedKinematic = GetComponent<Rigidbody>().isKinematic;
     }
