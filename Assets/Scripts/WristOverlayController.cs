@@ -22,7 +22,7 @@ public class WristOverlayController : MonoBehaviour {
         float dot = Vector3.Dot(forward.normalized, alligner.normalized);
 
         bool currState = dot > threshold;
-        print(dot);
+
         if (lastFrameState != currState)
         {
             Animate(currState);

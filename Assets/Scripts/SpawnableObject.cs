@@ -5,11 +5,6 @@ using UnityEngine;
 public class SpawnableObject : MonoBehaviour {
 
     public bool state = true;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {

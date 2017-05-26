@@ -10,7 +10,7 @@ public class BounceSoundController : SpawnableObject {
 
 	// Use this for initialization
 	void Start () {
-		source = GetComponent<AudioSource>();
+        source = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame

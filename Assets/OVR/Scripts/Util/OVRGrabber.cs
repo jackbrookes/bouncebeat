@@ -61,7 +61,8 @@ public class OVRGrabber : MonoBehaviour
     protected Quaternion m_anchorOffsetRotation;
     protected Vector3 m_anchorOffsetPosition;
     protected float m_prevFlex;
-	protected OVRGrabbable m_grabbedObj = null;
+    protected float indexTrigger;
+    protected OVRGrabbable m_grabbedObj = null;
     Vector3 m_grabbedObjectPosOff;
     Quaternion m_grabbedObjectRotOff;
 	protected Dictionary<OVRGrabbable, int> m_grabCandidates = new Dictionary<OVRGrabbable, int>();
@@ -152,8 +153,10 @@ public class OVRGrabber : MonoBehaviour
 		float prevFlex = m_prevFlex;
 		// Update values from inputs
 		m_prevFlex = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, m_controller);
+        indexTrigger = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, m_controller);
+        
 
-		CheckForGrabOrRelease(prevFlex);
+        CheckForGrabOrRelease(prevFlex);
     }
 
     void OnDestroy()
@@ -311,6 +314,21 @@ public class OVRGrabber : MonoBehaviour
         Rigidbody grabbedRigidbody = m_grabbedObj.grabbedRigidbody;
         Vector3 grabbablePosition = pos + rot * m_grabbedObjectPosOff;
         Quaternion grabbableRotation = rot * m_grabbedObjectRotOff;
+
+        if (m_grabbedObj.snapToAngle)
+        {
+
+            float snapAngleDeg = m_grabbedObj.snaps[(int)Mathf.Floor(indexTrigger * (m_grabbedObj.snaps.Length - 1))];
+
+            if (snapAngleDeg != 0)
+            {
+                float x = snapAngleDeg * Mathf.Round(grabbableRotation.eulerAngles.x / snapAngleDeg);
+                float y = snapAngleDeg * Mathf.Round(grabbableRotation.eulerAngles.y / snapAngleDeg);
+                float z = snapAngleDeg * Mathf.Round(grabbableRotation.eulerAngles.z / snapAngleDeg);
+                grabbableRotation.eulerAngles = new Vector3(x, y, z);
+            }
+        }
+
 
         if (forceTeleport)
         {

@@ -41,6 +41,10 @@ public class OVRGrabbable : MonoBehaviour
     protected bool m_grabbedKinematic = false;
     public Collider m_grabbedCollider = null;
     public OVRGrabber m_grabbedBy = null;
+    public bool snapToAngle = true;
+    public float[] snaps = new float[3] { 0f, 15f, 30f };
+
+
 
 	/// <summary>
 	/// If true, the object can currently be grabbed.
@@ -167,4 +171,5 @@ public class OVRGrabbable : MonoBehaviour
             m_grabbedBy.ForceRelease(this);
         }
     }
+
 }
