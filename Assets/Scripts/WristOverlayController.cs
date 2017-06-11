@@ -36,7 +36,6 @@ public class WristOverlayController : MonoBehaviour {
         foreach(MeshRenderer render in gameObject.GetComponentsInChildren<MeshRenderer>())
         {
             render.enabled = state;
-        }
-        
+        }        
     }
 }

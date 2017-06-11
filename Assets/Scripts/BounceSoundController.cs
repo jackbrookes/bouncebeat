@@ -21,7 +21,9 @@ public class BounceSoundController : SpawnableObject {
 	// play sound on collision
 	void OnCollisionEnter(Collision col){
 		if (state & col.gameObject.tag == "Bead") {
-			source.pitch = col.gameObject.GetComponent<Rigidbody>().velocity.magnitude / normalSpeed;
+            // pitch determined by velocity of bead
+            Vector3 vel = col.gameObject.GetComponent<Rigidbody>().velocity;
+            source.pitch = vel.magnitude / normalSpeed;
 			source.Play();
 		}
 	}

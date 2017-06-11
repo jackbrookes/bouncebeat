@@ -30,9 +30,9 @@ public class HologramController : MonoBehaviour {
         // make hologram
 
         hologram = Instantiate(objectToSpawn);
+        hologram.GetComponent<SpawnableObject>().state = false;
         DestroyImmediate(hologram.GetComponent<OVRGrabbable>());
         DestroyImmediate(hologram.GetComponent<Rigidbody>());
-        hologram.GetComponent<SpawnableObject>().state = false;
         hologram.transform.SetParent(hologramLocation, false);
         hologram.transform.localPosition = Vector3.zero;
         hologram.transform.localRotation = Quaternion.Euler(Vector3.zero);

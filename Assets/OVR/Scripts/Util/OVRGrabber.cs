@@ -71,6 +71,13 @@ public class OVRGrabber : MonoBehaviour
     /// <summary>
     /// The currently grabbed object.
     /// </summary>
+    /// 
+
+    public Vector3 thumbPad
+    {
+        get { return OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, m_controller); }
+    }
+
     public OVRGrabbable grabbedObject
     {
         get { return m_grabbedObj; }
@@ -154,7 +161,6 @@ public class OVRGrabber : MonoBehaviour
 		// Update values from inputs
 		m_prevFlex = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, m_controller);
         indexTrigger = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, m_controller);
-        
 
         CheckForGrabOrRelease(prevFlex);
     }
