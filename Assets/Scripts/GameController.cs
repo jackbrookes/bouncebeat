@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public List<AudioClip> baseClipList;
+    [HideInInspector]
+    public List<AudioClip> clipList;
+
+	void Awake () {
+        BuildSoundsList();
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    void BuildSoundsList()
+    {
+        clipList = baseClipList;
+    }
+
 }

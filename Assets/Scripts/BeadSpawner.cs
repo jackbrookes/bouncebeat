@@ -15,6 +15,7 @@ public class BeadSpawner : SpawnableObject {
     public GameObject uiGo;
     Canvas ui;
     CanvasScaler cs;
+    public AudioClip currentClip;
 
 	// Use this for initialization
 	void Start () {
@@ -46,6 +47,7 @@ public class BeadSpawner : SpawnableObject {
         {
             GameObject clone = Instantiate(bead, spawnPoint.position, Quaternion.identity);
             clone.GetComponent<Rigidbody>().velocity = spawnPoint.TransformDirection(Vector3.up * exitVelocity);
+            clone.GetComponent<AudioSource>().clip = currentClip;
         }
 	}
 
