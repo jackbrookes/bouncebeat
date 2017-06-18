@@ -14,7 +14,7 @@ public class SpawnerUIController : Selector{
 
     public void CycleSounds(bool direction)
     {
-        soundSelector.Cycle(direction);
+        soundSelector.Cycle(direction ? 1 : -1);
     }
 
     public void ModifyBPM(bool direction)
