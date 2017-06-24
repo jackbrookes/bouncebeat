@@ -5,6 +5,8 @@
 VR musical physics sandbox game made in Unity.
 When a bead hits a bouncepad it creates a sound, the pitch scales dependent on velocity.
 
+[Download latest release](https://github.com/jackbrookes/bouncebeat/releases)
+
 ## Information
 
 * You can spawn objects by picking them up from your wrists
