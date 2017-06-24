@@ -1,9 +1,26 @@
 # BounceBeat
 
+![Logo](https://github.com/jackbrookes/bouncebeat/media/bouncebeat-logo.png)
+
 VR musical physics sandbox game made in Unity.
+When a bead hits a bouncepad it creates a sound, the pitch scales dependent on velocity.
+
+## Information
+
+* You can spawn objects by picking them up from your wrists
+* You can snap objects rotationally using the index finger trigger
+* There are two objects:
+  * Spawner, which outputs beads
+  * BouncePad
+* Velocity scales the pitch of the sound when a bead hits a bouncepad
+* You can change the tempo of a spawner using the thumbstick up./down while held
+  * Left/right will cycle the instrument
+* Support Oculus on windows only
 
 ## To-do / Ideas
 
+* More sounds
+* Ability to import custom sounds
 * Flexible spawner framework, spawn balls of different colours/sounds
 * Teleporting mechanic
 * Scaling bouncepads
@@ -16,4 +33,4 @@ VR musical physics sandbox game made in Unity.
     * Random
     * Buffer
     * Manual spawner (press to spawn)
-* Optional object snapping
+* SteamVR support
