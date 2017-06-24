@@ -15,7 +15,7 @@ When a bead hits a bouncepad it creates a sound, the pitch scales dependent on v
 * Velocity scales the pitch of the sound when a bead hits a bouncepad
 * You can change the tempo of a spawner using the thumbstick up./down while held
   * Left/right will cycle the instrument
-* Support Oculus on windows only
+* Supports Oculus Rift only (probably works with Vive via ReVive)
 
 ## To-do / Ideas
 
