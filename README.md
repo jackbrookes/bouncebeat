@@ -2,6 +2,8 @@
 
 ![Logo](https://raw.githubusercontent.com/jackbrookes/bouncebeat/master/Media/bouncebeat-logo.png)
 
+### [Video](https://vimeo.com/223177181)
+
 VR musical physics sandbox game made in Unity.
 When a bead hits a bouncepad it creates a sound, the pitch scales dependent on velocity.
 
